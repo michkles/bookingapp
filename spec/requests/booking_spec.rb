@@ -29,5 +29,16 @@ RSpec.describe 'bookings', type: :request do
       get('/api/v1/bookings/index')
       expect(JSON.parse(response.body).count).to eq(2)  
     end
+
+    it "returns a filtered booking" do
+      space1 = create(:space, name: 'anyplace')
+      space2 = create(:space, name: 'another')
+      booking1 = create(:booking, space: space1)
+      booking2 = create(:booking, space: space1)
+      booking3 = create(:booking, space: space2)
+
+      get("/api/v1/bookings/index?space_id=#{booking1.space_id}")
+      expect(JSON.parse(response.body).count).to eq(2)  
+    end
   end
 end

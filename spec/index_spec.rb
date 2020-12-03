@@ -8,8 +8,8 @@ RSpec.describe 'home_page', type: :system do
     end
 
     it 'redirects to home index pgae' do
-        visit '/'
-        expect(page).to have_content('Bookings')
-      end
+      visit '/'
+      expect(page).to have_content('Bookings')
+    end
   end
 end

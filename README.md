@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a sample projects to list bookings. Not every required feature has been implemented yet. The missing feature are filtering by space name(although API is correctly filtering spaces by name) and filtering by start_date.
 
-Things you may want to cover:
+How to run: 
 
-* Ruby version
+1.bundle exec rake db:seeds
+2.bundle exec rails server
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+There are tests for frontend, models and requests.
+1.bundle exec rspec spec/

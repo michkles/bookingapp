@@ -1,2 +1,19 @@
 <h1>Bookings</h1>
 <p>Available listings</p>
+<form action="/api/v1/bookings/index">
+  <label for="spaces">Filter by spaces:</label>
+  <select id="spaces-list" name="space_id">
+  </select>
+  <input type="submit">
+</form>
+
+<div>
+ <table id="bookings-table">
+   <tr>
+     <th>Start date</th>
+     <th>End date</th>
+     <th>Description</th>
+     <th>Space</th>
+   </tr>
+ </table>
+</div>

@@ -15,3 +15,42 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+document.addEventListener("DOMContentLoaded", () => {
+  let url = "http://localhost:3000/api/v1/bookings/index"
+  fetch (url)
+  .then(resp => resp.json())
+  .then(data => data.forEach(booking => {
+    getSpaceName(booking.space_id, booking)
+    }))
+})
+
+function getSpaceName(spaceId, booking)
+{
+  let url = `http://localhost:3000/api/v1/spaces/${spaceId}`
+  fetch (url)
+  .then(resp => resp.json())
+  .then(data => displayRow(booking, data.id, data.name))
+}
+
+function displayRow(row, id, spaceName){
+  const table = document.querySelector("#bookings-table")
+  table.innerHTML +=
+  `
+  <tr>
+    <td>${row.start_date}</td>
+    <td>${row.end_date}</td>
+    <td>${row.description}</td>
+    <td>${spaceName}</td>
+  </tr>
+  `
+  populateSelectSpacesList(id, spaceName)
+}
+
+function populateSelectSpacesList(id, spaceName) {
+  const list = document.querySelector("#spaces-list")
+  list.innerHTML +=
+  `
+  <option value="${id}">${id, spaceName}</option>
+  `
+}
+
